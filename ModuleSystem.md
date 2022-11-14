@@ -40,4 +40,30 @@ first expanding that out first.
 
 #### Names?
 
-(here)
+There is an implicit assumption that an 'implementation' is actually an association
+of a bunch of (potentitally typed) terms to names. This means that a 'signature' must also
+match that. Unsurprisingly, that ends up looking very much like records and
+record signatures.
+
+Well, 'term' is not quite right, is it? That doesn't quite allow `data` and `record`
+declarations. What's really meant here is some kind of "definition". So rather than
+'term', let's use the more general Definition for that syntactic class.
+
+#### Namespace
+
+So we have (using Haskell's `Data.These`):
+
+> A Namespace is an association of names to `These Type Definition`.
+
+Just to be clear:
+- `This Type` corresponds to a postulate
+- `That Definition` corresponds to a bare implementation
+- `These Type Definition` corresponds to a properly typed implementation
+
+(In Agda, using `(Type, Maybe Definition)` to disallow bare implementations is probably
+better?)
+
+#### Agda
+
+It should be clear that Agda's (unparametrized) `module` corresponds to a
+namespace.
