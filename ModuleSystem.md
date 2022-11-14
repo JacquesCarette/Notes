@@ -33,3 +33,11 @@ describe something related to modules that will let us understand what is curren
 implemented.
 
 ### What is a Namespace?
+
+So if we really weaken "satisfies an interface" to "exports a bunch of names"
+(and is well-formed). We didn't actually talk about names yet... so it's worth
+first expanding that out first.
+
+#### Names?
+
+(here)
