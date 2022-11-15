@@ -85,7 +85,7 @@ There doesn't seem to be as simple an answer here.
 
 ## Requirements Analysis
 
-What do even want modules (namespaces) for?
+What do we even want modules (namespaces) for?
 
 At the simplest level, we know that libraries grow to be quite large, as there simply
 are many different concepts to express. At the absolute minimum, there needs to be
@@ -132,3 +132,6 @@ is clear, it's ok to write "messy" implementations. A more modern way to
 think of this is from the point of view of generative programming (whether 
 C++ templates, metaocaml, template haskell, or various hacked up means
 doesn't really matter.)
+
+Eventually, it would be really good to support design for change. But that's
+farther into the future.
