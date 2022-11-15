@@ -66,7 +66,10 @@ better?)
 #### Agda
 
 It should be clear that Agda's (unparametrized) `module` corresponds to a
-namespace.
+namespace. The following information in Agda's own documentation makes that
+very clear:
+
+> The main purpose of the module system is to structure the way names are used in a program. 
 
 The use of names is of course crucial for one purpose:
 **being able to access them externally**. The biggest difference between
@@ -99,6 +102,11 @@ acyclic graph helps a tiny bit, but doesn't solve the fundamental issue that the
 are non-trivial isomorphisms between bits of knowledge that seem to belong in
 different places, no matter how one slices things up. [Some references for this would
 be nice, later.]
+
+Nevertheless, Agda's own documentation says:
+
+> This is done by organising the program in an hierarchical structure of modules 
+> where each module contains a number of definitions and submodules.
 
 This doesn't mean we have to abandon hierarchies! It merely means that the
 hierarchy should not be taken too seriously, and that other means to
@@ -135,3 +143,69 @@ doesn't really matter.)
 
 Eventually, it would be really good to support design for change. But that's
 farther into the future.
+
+### Features
+
+Normally, it we would be better to have user stories here, but for expediency,
+let's go with features needed/wanted. Proper requirements can be reverse
+engineered from them later.
+
+The features used right now are
+1. accessing (i.e. Module.name)
+2. instantiating
+3. import
+4. open
+5. public
+6. using / hiding
+7. renaming
+8. data and record modules built 'implicitly'
+
+The desperately needed features are
+a. sharing
+
+It is worthwhile expanding what the features "mean":
+1. A ModNm is a (key,value) database, with keys being names, and values being
+definitions.
+2. A PMN is a special kind of "function" that is known to generate a ModNm.
+It can be partially applied.
+3. 'import' is a weird feature that stands out as it is really an interface to the
+underlying file system, and is mainly used for its side-effect of making a (P)MN
+visible in the current scope.
+4. open is a ModNm-to-scope operation that adds all the names in a ModNm as being
+directly visible in the current scope. It is side-effecting too in that sense.
+However, these are made visible in a 'private' manner, in the sense that they
+are not added to the external interface of the ModNm.
+5. the public qualifier overrides the behaviour of open to make the names
+visible publicly.
+6. using and hiding are two means the change visibility of names, i.e.
+  - using gives an explicit list of items now being defined,
+  - hiding explicit removes an explicit list of items from an implicit list of "all" names
+7. renaming provides a way to locally change the names of definitions.
+
+
+----
+
+## Misc Notes
+
+These will need to be moved up into the main text when the proper place
+appears.
+
+Below, ModNm is used for modules / namespaces, for brevity. ParModNm, and
+even PMN, for "parametrized modules / namespaces".
+
+### Parametrized modules / namespaces
+
+- parameters are not ModNm themselves! They are values from a type.
+So here too Agda's modules are quite second-class.
+- PMN are basically functions which are return a MonNm, i.e. generators.
+- However PMN are "transparent" in that the names that are eventually bound
+are visible even if a ModNm is not even applied. This is useful but weird.
+
+### Likely Needed
+
+Any next-gen version of 'module' is most likely to need a *Let* addition to the
+internal AST. This is the sanest way to maintain sharing.
+
+### Problems
+
+Syntax and pattern declarations have a weird status as definitions in a module.
