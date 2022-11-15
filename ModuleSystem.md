@@ -144,7 +144,7 @@ doesn't really matter.)
 Eventually, it would be really good to support design for change. But that's
 farther into the future.
 
-### Features
+### Current Features
 
 Normally, it we would be better to have user stories here, but for expediency,
 let's go with features needed/wanted. Proper requirements can be reverse
@@ -159,9 +159,6 @@ The features used right now are
 6. using / hiding
 7. renaming
 8. data and record modules built 'implicitly'
-
-The desperately needed features are
-a. sharing
 
 It is worthwhile expanding what the features "mean":
 1. A ModNm is a (key,value) database, with keys being names, and values being
@@ -182,6 +179,65 @@ visible publicly.
   - hiding explicit removes an explicit list of items from an implicit list of "all" names
 7. renaming provides a way to locally change the names of definitions.
 
+### Wanted Features
+
+1. sharing
+2. module interfaces (i.e. module types)
+3. module interface combinators
+
+## Design
+
+(This is written in a rush, to get feedback, and should not be understood as
+being more than a placeholder. In particular, the proposal seems like a bit of
+a leap given the rest of the write-up.)
+
+### Background
+
+**Important remark**: records types, telescopes, theories and contexts are, in dependent
+type theory "the same thing". There are versions of all of these that can be
+understood as associating names to types (and more). Some even include conservative extensions,
+aka definitions, even though they are "at the type level".
+
+### Proposal, Part 1
+
+Merge (at least) records (as values) and modules (as containers of implementations).
+Preserve a 'marker' that would recall the intent of use, so that some features can be
+enabled/disabled for each, if so desired. 
+
+For example, it might make sense to not allow 'open' in a record declaration,
+as that would mean that creating record values might have side effects. But then
+again, one can essentially hack things up now by using anonymous modules (both
+surrounding a declaration and local ones). So maybe this isn't even a big deal.
+
+Pros:
+- significant simplification of code base
+- no need to 'generate' modules for records
+- Module types
+- First class modules
+- Generative records
+- Records can now have private and abstract fields
+- No need to define dummy records to get to use selector syntax
+
+Cons:
+- very large surgery
+- would allow dependent record fields
+
+### Proposal, Part 2
+
+Introduce 'Let' in the Agda AST. Reason: preserve sharing.
+
+Change module instantiation to use 'Let' instead of using substitution.
+Furthermore, do not put independent lambdas on each 'name' in a module,
+but leave them be on the 'outside'. As parametrized modules are
+already transparent, these parameters would continue to be so (i.e. in
+some ways behave as if they were all implicit, whether they actually are or not.)
+
+### Proposal, Part 3
+
+Introduce signature combinators. Different combinators would produce different
+results (some would give the data of a pullback, for example), so that some
+syntax would be needed to "extract" concrete signature objects. This is needed
+to enable various combinations and diagram-level combinators.
 
 ----
 
