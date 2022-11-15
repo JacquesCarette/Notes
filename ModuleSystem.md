@@ -67,3 +67,68 @@ better?)
 
 It should be clear that Agda's (unparametrized) `module` corresponds to a
 namespace.
+
+The use of names is of course crucial for one purpose:
+**being able to access them externally**. The biggest difference between
+modules (and namespaces) and lambda-term (and contexts) is the ability
+to ``zoom in'' directly to one piece, without the need to use some
+unary codes. (Humans are not Borg.) 
+
+### What is a Module System?
+
+The question "what is a module" is not particularly interesting, even when augmented
+to deal with parametrized modules. This is because having a single module around
+doesn't really help, the real desire is to have many modules. So we need to
+worry about how modules interact, refer to each other, and so on.
+
+There doesn't seem to be as simple an answer here.
+
+## Requirements Analysis
+
+What do even want modules (namespaces) for?
+
+At the simplest level, we know that libraries grow to be quite large, as there simply
+are many different concepts to express. At the absolute minimum, there needs to be
+tools to help organize lots of code.
+
+Luckily, code doesn't normally consist of random artifacts. It expresses various
+kinds of (organized) knowledge. Now, it should be clear that a purely hierarchical
+organization is **completely hopeless**. There are concepts that will always want
+to 'sit' in multiple parts of some purely tree-like hierarchy. Going to a directed
+acyclic graph helps a tiny bit, but doesn't solve the fundamental issue that there
+are non-trivial isomorphisms between bits of knowledge that seem to belong in
+different places, no matter how one slices things up. [Some references for this would
+be nice, later.]
+
+This doesn't mean we have to abandon hierarchies! It merely means that the
+hierarchy should not be taken too seriously, and that other means to
+relate information must be supported too. Whether to do via allowing
+duplication and using post-facto isomorphisms, or going with generative 
+morphisms, or both, is an open design question.
+
+Nevertheless, one question to look at is "how do we come up with 'good'
+modules?"
+
+### Design for Change
+
+Parnas in his 1973 paper on information hiding (insert link here) provides
+a time-tested answer: if we know that certain things are likely to change
+in the future, then that aspect of the change should be **hidden** behind
+an abstraction barrier. One good process to follow to identify good
+modules is to divide the information contained in a module to that 
+which ought to be secret (often consists of implementation details, but
+there are others things one may hide as well) and those that can be
+exposed to the world, via an interface.
+
+It's important to remember that Parnas never insisted that 'hiding' be
+something that must be done *in* a language, never mind being enforced
+by the language itself. Human-convention interfaces are perfectly
+acceptable. Furthermore, and wildly misunderstood as well, there is no
+requirement whatsoever that modules persist *at run time*. That the compiler
+may inline everything is perfectly allowable. Interestingly, Parnas doesn't
+believe that modules necessarily need to exist in the code either - as long
+as they exist in the design and the mapping from the design to the implementation
+is clear, it's ok to write "messy" implementations. A more modern way to
+think of this is from the point of view of generative programming (whether 
+C++ templates, metaocaml, template haskell, or various hacked up means
+doesn't really matter.)
