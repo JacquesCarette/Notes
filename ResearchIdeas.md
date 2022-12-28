@@ -6,3 +6,4 @@ A place to keep various threads that I'd like to pursue, given time. Some are qu
 - NbE is related to biform theories and seems to be a particular kind of "meaning formula". Explore!
 - Quantifier elimination is a particular instance of finding closed forms. There's probably a lot more "out there" that are also instances, but not recognized as such.
 - What is a type? (That's a bad question, a good question is "What is a type system?")
+- Need to remember that the duality between sums and products should yield sigma types for 'sum types' and record / Pi types (over a finite, discrete set of labels) for 'product types'. Syntactic sugar can then be added for some special cases.
