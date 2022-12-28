@@ -7,3 +7,4 @@ A place to keep various threads that I'd like to pursue, given time. Some are qu
 - Quantifier elimination is a particular instance of finding closed forms. There's probably a lot more "out there" that are also instances, but not recognized as such.
 - What is a type? (That's a bad question, a good question is "What is a type system?")
 - Need to remember that the duality between sums and products should yield sigma types for 'sum types' and record / Pi types (over a finite, discrete set of labels) for 'product types'. Syntactic sugar can then be added for some special cases.
+- pattern-matching, especially in the 'total' case, corresponds to first doing a **partition** of the type 'space', and then a continuation is applied to each case. This is related to optics (lenses are projections, where things are first made 'cartesian'.)
