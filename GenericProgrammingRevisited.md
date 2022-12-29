@@ -13,6 +13,12 @@ At the end of the day, one can say that the in various languages, "generic progr
 the label that's used for the kinds of polymorphism that the language doesn't have, or at least
 doesn't support very well.
 
+In related work, there is:
+- Jeremy Gibbon's [Datatype−Generic Programming](https://www.cs.ox.ac.uk/publications/publication1397-abstract.html) chapter, 
+- Garcia et al.'s [An extended comparative study of language support for generic programming](https://www.cambridge.org/core/journals/journal-of-functional-programming/article/an-extended-comparative-study-of-language-support-for-generic-programming/C97D5964ECC2E651EEF9A70BC50600A6) 
+- Siek-Lumsdaine[A language for generic programming in the large](https://www.sciencedirect.com/science/article/pii/S0167642308001123)
+- Chetioui, Jaarvi, Haveraaen's [Revisiting Language Support for Generic Programming: When Genericity Is a Core Design Goal](https://arxiv.org/abs/2211.01678) (and its list of references)
+
 ToDo:
 - give full, good examples of each kind
 - find more papers (i.e. after the obvious survey papers) that really are about new kinds of polymorphism
