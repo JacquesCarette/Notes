@@ -2,6 +2,8 @@ Right now, every component in a category (there are 3 in agda-categories, namely
 
 The first thing to explore would be to do this for 2 levels, i.e. where all 3 parts could have pieces from 2 universes.
 
-Comma categories offer a first test case.
+Slice categories offer a first test case, and the coslice and comma.
 
 An obvious generalization would be an IJK-category. In fact, comma categories are probably 221-categories in that sense.
+
+These seems to be deeply related to Displayed Categories! Right now, I've started [doodling around](2Level/Category.lagda) on this.
