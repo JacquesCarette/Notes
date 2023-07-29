@@ -6,4 +6,4 @@ Slice categories offer a first test case, and the coslice and comma.
 
 An obvious generalization would be an IJK-category. In fact, comma categories are probably 221-categories in that sense.
 
-These seems to be deeply related to Displayed Categories! Right now, I've started [doodling around](https://github.com/JacquesCarette/Categorical-Playground/2Level/Category.lagda) on this.
+These seems to be deeply related to Displayed Categories! Right now, I've started [doodling around](https://github.com/JacquesCarette/Categorical-Playground/blob/-/2Level/Category.lagda) on this.
