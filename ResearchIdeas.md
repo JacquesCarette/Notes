@@ -24,3 +24,4 @@ language (aka syntax) is a coordinate system and vice versa.
 In linear algebra, a coordinate system is a basis. Abstract linear algebra, i.e. basis free, can be much nicer than working in a specific basis. Of course, to do concrete computations, a basis is required.
 In physics, coordinate systems can be crucial: doing orbital mechanics in cartesian coordinates, instead of spherical, is completely crazy.
 But this argues for the need to have many (vastly different!) programming languages for different tasks.
+- "Syntactic mathematics" (like closed-form expressions, but so much more). Analyze the parts of mathematics that really about the language rather than the semantics. There is quite a bit more than meets the eye. There is likely a lot of stuff that works in the initial model without saying so, for example. Of course, the amount of meta-mathematics that is syntactic dwarfs that, but that's another topic.
